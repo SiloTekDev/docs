@@ -22,7 +22,7 @@ hide:
   <a class="st-card" href="redm/">
     <div class="st-card__icon">🐎</div>
     <h3>REDM SCRIPTS</h3>
-    <p>Immersive RedM resources with VORP &amp; RSG auto-detection and instant escrow delivery: silo-libs, Silo-Backgammon, Silo-PonyExpress.</p>
+    <p>Immersive RedM minigames, jobs and tools with VORP &amp; RSG auto-detection and instant escrow delivery: silo-libs, Backgammon, Mayorpoly, DuelDice, PonyExpress, ForestRanger.</p>
     <span class="st-card__go">Open docs →</span>
   </a>
   <a class="st-card" href="omnipanel/">

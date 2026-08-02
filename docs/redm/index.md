@@ -10,8 +10,20 @@ nothing to configure.
 | Resource | What it is | Get it |
 |----------|------------|--------|
 | **[silo-libs](silo-libs/index.md)** | Free, open-source framework bridge (VORP / RSG) every SiloTek script builds on | [GitHub — free](https://github.com/SiloTekDev/silo-libs) |
-| **[Silo-Backgammon](../redm/backgammon/index.md)** | Two-player 3D backgammon on physical tables, with betting, spectators and crash recovery | [silotek.dev](https://silotek.dev) |
-| **[Silo-PonyExpress](../redm/ponyexpress/index.md)** | Player-driven delivery job: courier board, XP & levels, express orders, parcel lockers | [silotek.dev](https://silotek.dev) |
+| **[Silo-Backgammon](backgammon/index.md)** | Two-player 3D backgammon on physical tables, with betting, spectators and crash recovery | [silotek.dev](https://silotek.dev) |
+| **[Silo-Mayorpoly](mayorpoly/index.md)** | 2–6 player 3D frontier property board game: real board, real deeds on the table, trading, breaks and crash recovery | [silotek.dev](https://silotek.dev) |
+| **[Silo-DuelDice](dueldice/index.md)** | Street dice duel — one item, two kneeling players, no UI at all | [silotek.dev](https://silotek.dev) |
+| **[Silo-PonyExpress](ponyexpress/index.md)** | Player-driven delivery job: courier board, XP & levels, express orders, parcel lockers | [silotek.dev](https://silotek.dev) |
+| **[Silo-ForestRanger](forestranger/index.md)** | Forest ranger job: six random incident types, Eagle Eye tracking, vanilla arrests, ranks and shared payouts | [silotek.dev](https://silotek.dev) |
+| **[Silo-BeecherHome](beecherhome/index.md)** | Builder tool: rebuild the finished Beecher's Hope ranch anywhere on the map | [silotek.dev](https://silotek.dev) |
+
+### Games or jobs?
+
+- **Minigames** — [Silo-Backgammon](backgammon/index.md),
+  [Silo-Mayorpoly](mayorpoly/index.md), [Silo-DuelDice](dueldice/index.md)
+- **Jobs** — [Silo-PonyExpress](ponyexpress/index.md),
+  [Silo-ForestRanger](forestranger/index.md)
+- **Tools** — [Silo-BeecherHome](beecherhome/index.md)
 
 ## Shared principles
 
@@ -22,8 +34,8 @@ All SiloTek scripts follow the same rules:
 - **Open config, escrowed code** — everything a server owner needs to edit
   (`config.lua`, locales, SQL) ships unencrypted; the core logic is protected
   by CFX Asset Escrow.
-- **Automatic database setup** — tables create and upgrade themselves on
-  first start. No SQL files to import.
+- **Automatic database setup** — where a script uses a database, its tables
+  create and upgrade themselves on first start. No SQL files to import.
 - **One notification hook** — `NotifyFunction` at the bottom of every config
   plugs your notification system in with one line (VORP / RSG auto-detected
   by default).

@@ -87,12 +87,29 @@ nav:
           - Installation: redm/backgammon/installation.md
           - Configuration: redm/backgammon/configuration.md
           - Gameplay & Admin: redm/backgammon/gameplay.md
+      - Silo-Mayorpoly:
+          - redm/mayorpoly/index.md
+          - Installation: redm/mayorpoly/installation.md
+          - Configuration: redm/mayorpoly/configuration.md
+          - Playing & Rules: redm/mayorpoly/rules.md
+      - Silo-DuelDice:
+          - redm/dueldice/index.md
+          - Installation: redm/dueldice/installation.md
+          - Configuration: redm/dueldice/configuration.md
       - Silo-PonyExpress:
           - redm/ponyexpress/index.md
           - Installation: redm/ponyexpress/installation.md
           - Configuration: redm/ponyexpress/configuration.md
           - Features: redm/ponyexpress/features.md
           - Admin & Security: redm/ponyexpress/admin.md
+      - Silo-ForestRanger:
+          - redm/forestranger/index.md
+          - Installation: redm/forestranger/installation.md
+          - Incidents: redm/forestranger/incidents.md
+          - Configuration: redm/forestranger/configuration.md
+          - API & Limitations: redm/forestranger/api.md
+      - Silo-BeecherHome:
+          - redm/beecherhome/index.md
   - OmniPanel: omnipanel/index.md
   - Hosting: hosting/index.md
   - RootOps: rootops/index.md
