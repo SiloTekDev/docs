@@ -16,6 +16,14 @@
   font-style: normal;
 }
 
+/* terminal font used for the SiloTek wordmark on silotek.dev */
+@font-face {
+  font-family: 'VT323';
+  src: url('../assets/fonts/vt323.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+}
+
 :root {
   --st-mint: #9dffb8;
   --st-mint-strong: #7dffb0;
@@ -32,11 +40,75 @@
   --md-primary-fg-color: #050705;
   --md-default-bg-color: #0a0f0c;
   --md-code-hl-color: rgba(157, 255, 184, 0.18);
+  --st-dot: rgba(157, 255, 184, 0.055);
+  --st-page-glow: rgba(43, 96, 69, 0.28);
+  --st-page-base: #070b09;
 }
 
 [data-md-color-scheme="default"] {
   --md-accent-fg-color: #0b9d4d;
   --md-typeset-a-color: #0b9d4d;
+  --st-dot: rgba(11, 157, 77, 0.09);
+  --st-page-glow: rgba(157, 255, 184, 0.22);
+  --st-page-base: #f4f7f5;
+}
+
+/* ===== page background: dotted grid + brand glow, both schemes ===== */
+.md-main,
+.md-container,
+.md-content {
+  background: transparent;
+}
+
+body,
+.md-main__inner {
+  background-color: var(--st-page-base);
+}
+
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background:
+    radial-gradient(var(--st-dot) 1px, transparent 1.6px),
+    radial-gradient(90% 55% at 50% 0%, var(--st-page-glow) 0%, transparent 62%),
+    linear-gradient(180deg, var(--st-page-base), var(--st-page-base));
+  background-size: 22px 22px, cover, cover;
+}
+
+/* content sits on a soft panel so long text stays readable over the pattern */
+[data-md-color-scheme="slate"] .md-content__inner {
+  background: rgba(10, 16, 12, 0.72);
+  border: 1px solid rgba(157, 255, 184, 0.07);
+  border-radius: 14px;
+  padding: 1.2rem 1.6rem 2rem;
+  margin-top: 0.6rem;
+  backdrop-filter: blur(2px);
+}
+
+[data-md-color-scheme="default"] .md-content__inner {
+  background: rgba(255, 255, 255, 0.86);
+  border: 1px solid rgba(11, 157, 77, 0.12);
+  border-radius: 14px;
+  padding: 1.2rem 1.6rem 2rem;
+  margin-top: 0.6rem;
+  backdrop-filter: blur(2px);
+}
+
+/* the home hero brings its own background — no panel around it */
+.md-content__inner:has(.st-home) {
+  background: transparent !important;
+  border: 0 !important;
+  padding: 0 !important;
+  backdrop-filter: none !important;
+}
+
+/* sidebars stay transparent so the pattern shows through */
+.md-sidebar,
+.md-nav {
+  background: transparent;
 }
 
 /* header + tabs: pitch dark, brand font on the site title */
@@ -140,16 +212,19 @@
   50% { transform: translateY(-7px); }
 }
 
+/* .md-typeset h1 outranks a lone class selector — qualify it to win */
+.md-typeset .st-home__title,
 .st-home__title {
-  font-family: 'KontainerBig', sans-serif;
-  font-size: 2.6rem;
-  letter-spacing: 0.14em;
-  margin: 0 0 0.4rem;
+  font-family: 'VT323', 'KontainerBig', monospace;
+  font-size: 4.2rem;
+  line-height: 1;
+  letter-spacing: 0.1em;
+  margin: 0 0 0.5rem;
   color: #ffffff;
   text-shadow:
-    2px 0 0 rgba(0, 229, 255, 0.45),
-    -2px 0 0 rgba(255, 45, 140, 0.45),
-    0 0 24px rgba(157, 255, 184, 0.35);
+    2px 0 0 rgba(0, 229, 255, 0.5),
+    -2px 0 0 rgba(255, 45, 140, 0.5),
+    0 0 26px rgba(157, 255, 184, 0.4);
 }
 
 .st-home__tagline {
