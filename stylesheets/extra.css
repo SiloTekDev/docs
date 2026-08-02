@@ -1,0 +1,48 @@
+/* ===== SiloTek sidebar: clearly separated categories ===== */
+
+/* each product/category block: breathing room + divider line above */
+.md-nav--primary .md-nav__item--section {
+  margin-top: 1.4em;
+  padding-top: 0.9em;
+  border-top: 1px solid var(--md-default-fg-color--lightest);
+}
+
+/* first section right under the tab title needs no divider */
+.md-nav--primary > .md-nav__list > .md-nav__item--section:first-of-type {
+  border-top: none;
+  margin-top: 0.6em;
+  padding-top: 0;
+}
+
+/* category title: small caps, letter-spaced, amber accent */
+.md-nav--primary .md-nav__item--section > .md-nav__link,
+.md-nav--primary .md-nav__item--section > label.md-nav__link {
+  font-size: 0.64rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--md-accent-fg-color) !important;
+  opacity: 0.95;
+}
+
+.md-nav--primary .md-nav__item--section > .md-nav__link:hover {
+  opacity: 1;
+}
+
+/* pages inside a product category: indented behind a vertical guide line.
+   (level 2 = the product groups; the outer tab section keeps no guide) */
+.md-nav--primary .md-nav__item--section > .md-nav[data-md-level="2"] > .md-nav__list {
+  border-left: 2px solid var(--md-default-fg-color--lightest);
+  margin-left: 0.15rem;
+  padding-left: 0.65rem;
+}
+
+/* active page: stronger highlight so "where am I" is instant */
+.md-nav--primary .md-nav__link--active {
+  font-weight: 700;
+}
+
+/* slightly larger hit targets, calmer rhythm */
+.md-nav--primary .md-nav__item--section .md-nav__link {
+  margin-top: 0.35em;
+}
