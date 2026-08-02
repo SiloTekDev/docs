@@ -1,22 +1,89 @@
-/* ===== SiloTek sidebar: clearly separated categories ===== */
+/* ===================================================================== */
+/* SiloTek brand — matches silotek.dev (mint green on deep dark, dotted) */
+/* ===================================================================== */
 
-/* each product/category block: breathing room + divider line above */
+@font-face {
+  font-family: 'KontainerBig';
+  src: url('../assets/fonts/kontainer-big.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'KontainerMedium';
+  src: url('../assets/fonts/kontainer-medium.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+:root {
+  --st-mint: #9dffb8;
+  --st-mint-strong: #7dffb0;
+  --st-mint-dim: rgba(157, 255, 184, 0.55);
+  --st-deep: #070b09;
+  --st-panel: #0d1410;
+  --st-glow: rgba(43, 96, 69, 0.55);
+}
+
+/* brand accent everywhere (links, active nav, search highlight) */
+[data-md-color-scheme="slate"] {
+  --md-accent-fg-color: var(--st-mint-strong);
+  --md-typeset-a-color: var(--st-mint);
+  --md-primary-fg-color: #050705;
+  --md-default-bg-color: #0a0f0c;
+  --md-code-hl-color: rgba(157, 255, 184, 0.18);
+}
+
+[data-md-color-scheme="default"] {
+  --md-accent-fg-color: #0b9d4d;
+  --md-typeset-a-color: #0b9d4d;
+}
+
+/* header + tabs: pitch dark, brand font on the site title */
+.md-header,
+.md-tabs {
+  background-color: #050705 !important;
+}
+
+.md-header__topic .md-ellipsis,
+.md-tabs__link {
+  font-family: 'KontainerBig', 'Roboto', sans-serif;
+  letter-spacing: 0.06em;
+}
+
+.md-tabs__link--active {
+  color: var(--st-mint);
+}
+
+.md-header__button.md-logo img {
+  height: 1.7rem;
+  filter: drop-shadow(0 0 6px rgba(157, 255, 184, 0.35));
+}
+
+/* headings carry the brand type */
+.md-typeset h1,
+.md-typeset h2 {
+  font-family: 'KontainerBig', 'Roboto', sans-serif;
+  letter-spacing: 0.04em;
+}
+
+/* ===== sidebar: clearly separated categories ===== */
+
 .md-nav--primary .md-nav__item--section {
   margin-top: 1.4em;
   padding-top: 0.9em;
   border-top: 1px solid var(--md-default-fg-color--lightest);
 }
 
-/* first section right under the tab title needs no divider */
 .md-nav--primary > .md-nav__list > .md-nav__item--section:first-of-type {
   border-top: none;
   margin-top: 0.6em;
   padding-top: 0;
 }
 
-/* category title: small caps, letter-spaced, amber accent */
 .md-nav--primary .md-nav__item--section > .md-nav__link,
 .md-nav--primary .md-nav__item--section > label.md-nav__link {
+  font-family: 'KontainerBig', 'Roboto', sans-serif;
   font-size: 0.64rem;
   font-weight: 700;
   letter-spacing: 0.14em;
@@ -29,20 +96,169 @@
   opacity: 1;
 }
 
-/* pages inside a product category: indented behind a vertical guide line.
-   (level 2 = the product groups; the outer tab section keeps no guide) */
 .md-nav--primary .md-nav__item--section > .md-nav[data-md-level="2"] > .md-nav__list {
   border-left: 2px solid var(--md-default-fg-color--lightest);
   margin-left: 0.15rem;
   padding-left: 0.65rem;
 }
 
-/* active page: stronger highlight so "where am I" is instant */
 .md-nav--primary .md-nav__link--active {
   font-weight: 700;
 }
 
-/* slightly larger hit targets, calmer rhythm */
 .md-nav--primary .md-nav__item--section .md-nav__link {
   margin-top: 0.35em;
+}
+
+/* ===================================================================== */
+/* HOME — hero + service grid, silotek.dev style                          */
+/* ===================================================================== */
+
+.st-home {
+  position: relative;
+  margin: -1.2rem -0.8rem 0;
+  padding: 3.4rem 1.2rem 3rem;
+  text-align: center;
+  overflow: hidden;
+  border-radius: 0 0 18px 18px;
+  background:
+    radial-gradient(rgba(157, 255, 184, 0.055) 1px, transparent 1.6px),
+    radial-gradient(120% 90% at 50% 0%, var(--st-glow) 0%, rgba(10, 18, 13, 0.9) 46%, var(--st-deep) 100%);
+  background-size: 22px 22px, cover;
+}
+
+.st-home__logo {
+  width: 148px;
+  height: 148px;
+  margin: 0 auto 1.1rem;
+  filter: drop-shadow(0 0 22px rgba(157, 255, 184, 0.4));
+  animation: st-float 5s ease-in-out infinite;
+}
+
+@keyframes st-float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-7px); }
+}
+
+.st-home__title {
+  font-family: 'KontainerBig', sans-serif;
+  font-size: 2.6rem;
+  letter-spacing: 0.14em;
+  margin: 0 0 0.4rem;
+  color: #ffffff;
+  text-shadow:
+    2px 0 0 rgba(0, 229, 255, 0.45),
+    -2px 0 0 rgba(255, 45, 140, 0.45),
+    0 0 24px rgba(157, 255, 184, 0.35);
+}
+
+.st-home__tagline {
+  font-family: 'KontainerMedium', sans-serif;
+  color: var(--st-mint-dim);
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  font-size: 0.78rem;
+  margin: 0 0 1.7rem;
+}
+
+.st-home__cta {
+  display: flex;
+  gap: 0.8rem;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-bottom: 0.4rem;
+}
+
+.st-btn {
+  display: inline-block;
+  padding: 0.55rem 1.5rem;
+  border: 1px solid var(--st-mint-dim);
+  border-radius: 8px;
+  font-family: 'KontainerMedium', sans-serif;
+  font-size: 0.72rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--st-mint) !important;
+  background: rgba(157, 255, 184, 0.06);
+  transition: 160ms ease;
+}
+
+.st-btn:hover {
+  background: var(--st-mint);
+  color: #06110a !important;
+  box-shadow: 0 0 26px rgba(157, 255, 184, 0.45);
+  transform: translateY(-2px);
+}
+
+.st-btn--solid {
+  background: var(--st-mint);
+  color: #06110a !important;
+}
+
+.st-btn--solid:hover {
+  background: #ffffff;
+}
+
+/* service grid */
+.st-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: 1rem;
+  margin: 2rem 0 1rem;
+  text-align: left;
+}
+
+.st-card {
+  display: block;
+  padding: 1.25rem 1.3rem 1.2rem;
+  border: 1px solid rgba(157, 255, 184, 0.16);
+  border-radius: 12px;
+  background:
+    radial-gradient(rgba(157, 255, 184, 0.04) 1px, transparent 1.4px),
+    linear-gradient(180deg, rgba(157, 255, 184, 0.05), rgba(0, 0, 0, 0.25));
+  background-size: 18px 18px, cover;
+  background-color: var(--st-panel);
+  color: inherit !important;
+  transition: 180ms ease;
+}
+
+.st-card:hover {
+  border-color: var(--st-mint-dim);
+  transform: translateY(-4px);
+  box-shadow: 0 14px 34px rgba(0, 0, 0, 0.45), 0 0 22px rgba(157, 255, 184, 0.14);
+}
+
+.st-card__icon {
+  font-size: 1.5rem;
+  line-height: 1;
+  margin-bottom: 0.5rem;
+  color: var(--st-mint);
+}
+
+.st-card h3 {
+  font-family: 'KontainerBig', sans-serif;
+  font-size: 0.94rem;
+  letter-spacing: 0.1em;
+  margin: 0 0 0.4rem;
+  color: #ffffff;
+}
+
+.st-card p {
+  font-size: 0.68rem;
+  line-height: 1.55;
+  color: var(--md-default-fg-color--light);
+  margin: 0 0 0.6rem;
+}
+
+.st-card__go {
+  font-family: 'KontainerMedium', sans-serif;
+  font-size: 0.66rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--st-mint);
+}
+
+/* light scheme: keep the hero dark on purpose — it is the brand */
+[data-md-color-scheme="default"] .st-home {
+  color: #e8f5ec;
 }
