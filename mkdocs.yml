@@ -7,18 +7,20 @@ repo_name: SiloTekDev
 theme:
   name: material
   language: en
+  logo: assets/logo.png
+  favicon: assets/logo.png
   palette:
     - media: "(prefers-color-scheme: dark)"
       scheme: slate
       primary: black
-      accent: amber
+      accent: green
       toggle:
         icon: material/weather-sunny
         name: Switch to light mode
     - media: "(prefers-color-scheme: light)"
       scheme: default
       primary: black
-      accent: amber
+      accent: green
       toggle:
         icon: material/weather-night
         name: Switch to dark mode
