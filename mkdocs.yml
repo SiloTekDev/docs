@@ -1,0 +1,92 @@
+site_name: SiloTek Docs
+site_description: Documentation for SiloTek — RedM scripts, OmniPanel, hosting and RootOps.
+site_url: https://silotekdev.github.io/docs/
+repo_url: https://github.com/SiloTekDev/silo-libs
+repo_name: SiloTekDev
+
+theme:
+  name: material
+  language: en
+  palette:
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: black
+      accent: amber
+      toggle:
+        icon: material/weather-sunny
+        name: Switch to light mode
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: black
+      accent: amber
+      toggle:
+        icon: material/weather-night
+        name: Switch to dark mode
+  features:
+    - navigation.tabs
+    - navigation.sections
+    - navigation.top
+    - navigation.footer
+    - search.suggest
+    - search.highlight
+    - search.share
+    - content.code.copy
+    - content.tabs.link
+  icon:
+    repo: fontawesome/brands/github
+
+markdown_extensions:
+  - admonition
+  - attr_list
+  - md_in_html
+  - tables
+  - toc:
+      permalink: true
+  - pymdownx.details
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
+  - pymdownx.keys
+  - pymdownx.highlight:
+      anchor_linenums: true
+  - pymdownx.inlinehilite
+  - pymdownx.superfences
+  - pymdownx.tabbed:
+      alternate_style: true
+
+extra:
+  social:
+    - icon: fontawesome/brands/discord
+      link: https://discord.gg/T5T5ZsGEsU
+      name: SiloTek Discord
+    - icon: fontawesome/brands/github
+      link: https://github.com/SiloTekDev
+      name: SiloTekDev on GitHub
+    - icon: material/web
+      link: https://silotek.dev
+      name: silotek.dev
+
+copyright: Copyright &copy; 2026 SiloTek
+
+nav:
+  - Home: index.md
+  - RedM Scripts:
+      - redm/index.md
+      - silo-libs:
+          - Overview: redm/silo-libs/index.md
+          - API Reference: redm/silo-libs/api.md
+          - Changelog: redm/silo-libs/changelog.md
+      - Silo-Backgammon:
+          - Overview: redm/backgammon/index.md
+          - Installation: redm/backgammon/installation.md
+          - Configuration: redm/backgammon/configuration.md
+          - Gameplay & Admin: redm/backgammon/gameplay.md
+      - Silo-PonyExpress:
+          - Overview: redm/ponyexpress/index.md
+          - Installation: redm/ponyexpress/installation.md
+          - Configuration: redm/ponyexpress/configuration.md
+          - Features: redm/ponyexpress/features.md
+          - Admin & Security: redm/ponyexpress/admin.md
+  - OmniPanel: omnipanel/index.md
+  - Hosting: hosting/index.md
+  - RootOps: rootops/index.md
