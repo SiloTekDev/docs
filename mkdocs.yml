@@ -108,8 +108,6 @@ nav:
           - Incidents: redm/forestranger/incidents.md
           - Configuration: redm/forestranger/configuration.md
           - API & Limitations: redm/forestranger/api.md
-      - Silo-BeecherHome:
-          - redm/beecherhome/index.md
   - OmniPanel: omnipanel/index.md
   - Hosting: hosting/index.md
   - RootOps: rootops/index.md

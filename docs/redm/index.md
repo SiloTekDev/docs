@@ -15,7 +15,6 @@ nothing to configure.
 | **[Silo-DuelDice](dueldice/index.md)** | Street dice duel — one item, two kneeling players, no UI at all | [silotek.dev](https://silotek.dev) |
 | **[Silo-PonyExpress](ponyexpress/index.md)** | Player-driven delivery job: courier board, XP & levels, express orders, parcel lockers | [silotek.dev](https://silotek.dev) |
 | **[Silo-ForestRanger](forestranger/index.md)** | Forest ranger job: six random incident types, Eagle Eye tracking, vanilla arrests, ranks and shared payouts | [silotek.dev](https://silotek.dev) |
-| **[Silo-BeecherHome](beecherhome/index.md)** | Builder tool: rebuild the finished Beecher's Hope ranch anywhere on the map | [silotek.dev](https://silotek.dev) |
 
 ### Games or jobs?
 
@@ -23,7 +22,6 @@ nothing to configure.
   [Silo-Mayorpoly](mayorpoly/index.md), [Silo-DuelDice](dueldice/index.md)
 - **Jobs** — [Silo-PonyExpress](ponyexpress/index.md),
   [Silo-ForestRanger](forestranger/index.md)
-- **Tools** — [Silo-BeecherHome](beecherhome/index.md)
 
 ## Shared principles
 
