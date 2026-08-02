@@ -1,2 +1,5 @@
 site/
 __pycache__/
+
+# workflow kept local until the gh token gets the 'workflow' scope
+.github/
