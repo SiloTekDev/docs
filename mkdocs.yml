@@ -25,6 +25,7 @@ theme:
   features:
     - navigation.tabs
     - navigation.sections
+    - navigation.indexes
     - navigation.top
     - navigation.footer
     - search.suggest
@@ -68,21 +69,24 @@ extra:
 
 copyright: Copyright &copy; 2026 SiloTek
 
+extra_css:
+  - stylesheets/extra.css
+
 nav:
   - Home: index.md
   - RedM Scripts:
       - redm/index.md
       - silo-libs:
-          - Overview: redm/silo-libs/index.md
+          - redm/silo-libs/index.md
           - API Reference: redm/silo-libs/api.md
           - Changelog: redm/silo-libs/changelog.md
       - Silo-Backgammon:
-          - Overview: redm/backgammon/index.md
+          - redm/backgammon/index.md
           - Installation: redm/backgammon/installation.md
           - Configuration: redm/backgammon/configuration.md
           - Gameplay & Admin: redm/backgammon/gameplay.md
       - Silo-PonyExpress:
-          - Overview: redm/ponyexpress/index.md
+          - redm/ponyexpress/index.md
           - Installation: redm/ponyexpress/installation.md
           - Configuration: redm/ponyexpress/configuration.md
           - Features: redm/ponyexpress/features.md
