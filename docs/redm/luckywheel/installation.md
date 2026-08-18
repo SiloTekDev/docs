@@ -13,7 +13,7 @@ The package contains **three resources** — all three go into your server's
 
 ```
 ensure vorp_core          # or rsg-core — the framework is auto-detected
-ensure vorp_inventory     # VORP only, for item prizes
+ensure vorp_inventory     # VORP only — needed for item prizes and item spin costs
 
 ensure Silo-LuckyWheel-Props   # props FIRST — the game needs the models
 ensure silo-libs          # then the framework bridge
@@ -46,7 +46,29 @@ Wheels = {
 - `blip = false` hides the wheel from the map.
 - Add as many as you like; each spins independently.
 
-## 4. Test it
+## 4. Set the price
+
+`SpinCost` says what one spin costs — cash **or** an inventory item:
+
+```lua
+SpinCost = { type = "money", amount = 10 },                                   -- $10
+SpinCost = { type = "item", amount = 1, item = "goldbar", label = "Gold Bar" },
+```
+
+Any wheel can override it with its own `cost = { ... }`, so a cash wheel and
+a gold-bar wheel can stand in the same town. Full reference on the
+[Configuration](configuration.md#the-price-of-a-spin) page.
+
+!!! warning "Item costs are VORP-only today"
+    Charging an item needs a framework inventory adapter — the same
+    limitation item *prizes* have. On RSG the player is told the wheel is out
+    of order and the reason is logged; the spin is never given away free.
+    Cash costs work on both frameworks.
+
+If the server console names a wheel and a broken cost on start, fix it before
+going live — that wheel refuses to spin until you do.
+
+## 5. Test it
 
 Set `Dev = true` for debug prints and the alignment command:
 

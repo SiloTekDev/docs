@@ -18,6 +18,9 @@ player standing nearby watches the same wheel slow down onto the same slice.
   the wheel is animated to land on it. All money moves server-side.
 - **Money or items, per slice** — every wheel value pays what you configure:
   cash, inventory items, or both.
+- **Pay to spin with cash or with an item** — `SpinCost` takes dollars or an
+  inventory item (a gold bar, a casino chip, anything in your item database),
+  and each wheel can charge its own price.
 - **Odds that match the paint** — the default `Chances` mirror how many
   segments of each value physically exist on the wheel, so the odds are what
   players see. About **84%** return by default: a 16% house edge, tunable
@@ -25,14 +28,15 @@ player standing nearby watches the same wheel slow down onto the same slice.
 - **Big-win announcements** — wins of 30 and 100x can be broadcast so the
   whole saloon knows who just got lucky.
 - **Unlimited wheels**, each spinning independently, each with its own map
-  blip.
+  blip and its own price.
 - **10 languages** — en, ro, it, de, fr, es, pt, ru, pl, tr.
 - **No database, no NUI** — the lightest install in the family.
 
 ## How a spin plays
 
 1. Walk up to the wheel → prompt (++g++) within `PromptDistance`.
-2. `SpinCost` is taken; the wheel spins for `SpinDurationMs`.
+2. `SpinCost` is taken — cash or an item, whichever that wheel charges; the
+   wheel spins for `SpinDurationMs`.
 3. The pointer clicks over the pegs; everyone within `SpectateRange` (40 m)
    watches the same spin.
 4. The slice it stops on is what you win — money, items, or both.

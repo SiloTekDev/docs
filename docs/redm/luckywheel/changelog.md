@@ -1,7 +1,41 @@
 # Changelog
 
-Version currently shipping: **1.0.0** — paired with
+Version currently shipping: **1.1.0** — paired with
 `Silo-LuckyWheel-Props` **1.0** and [`silo-libs`](../silo-libs/index.md).
+
+## v1.1.0 — 2026-08-18
+
+### Added
+
+- **A spin can cost an inventory item instead of cash.** `SpinCost` names what
+  is taken and how much:
+
+    ```lua
+    SpinCost = { type = "money", amount = 10 },                                   -- $10
+    SpinCost = { type = "money", amount = 0 },                                    -- free spin
+    SpinCost = { type = "item", amount = 1, item = "goldbar", label = "Gold Bar" },
+    ```
+
+- **A price per wheel.** Any `Wheels` entry can carry its own `cost = { ... }`
+  and ignore the global `SpinCost` — a cash wheel in Valentine and a gold-bar
+  wheel in Saint Denis, side by side. The prompt shows the price of the wheel
+  you are standing at.
+- A misconfigured price is printed with the wheel's label on server start, and
+  that wheel refuses to spin instead of quietly becoming free.
+
+### Changed
+
+- `SpinCost = 10` — the old plain number — still works and still means
+  dollars. Existing configs need no edit.
+- A spin interrupted by a resource stop refunds **whatever was staked**: the
+  item returns to the satchel, cash returns to the wallet.
+- Seven new locale strings in all ten languages.
+
+### Notes
+
+- Item costs need a framework inventory silo-libs supports — **VORP today**.
+  On RSG the spin is refused with a message to the player and a console line;
+  it never becomes free. Money costs work on both frameworks.
 
 ## v1.0.0 — 2026-08-15
 
