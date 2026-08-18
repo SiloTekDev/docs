@@ -15,11 +15,13 @@ nothing to configure.
 | **[Silo-DuelDice](dueldice/index.md)** | Street dice duel — one item, two kneeling players, no UI at all | [silotek.dev](https://silotek.dev) |
 | **[Silo-PonyExpress](ponyexpress/index.md)** | Player-driven delivery job: courier board, XP & levels, express orders, parcel lockers | [silotek.dev](https://silotek.dev) |
 | **[Silo-ForestRanger](forestranger/index.md)** | Forest ranger job: six random incident types, Eagle Eye tracking, vanilla arrests, ranks and shared payouts | [silotek.dev](https://silotek.dev) |
+| **[Silo-LuckyWheel](luckywheel/index.md)** | A hand-painted 1899 wheel of fortune standing in the world — server-rolled slices, money or item prizes, big-win announcements | [silotek.dev](https://silotek.dev) |
 
 ### Games or jobs?
 
 - **Minigames** — [Silo-Backgammon](backgammon/index.md),
-  [Silo-Mayorpoly](mayorpoly/index.md), [Silo-DuelDice](dueldice/index.md)
+  [Silo-Mayorpoly](mayorpoly/index.md), [Silo-DuelDice](dueldice/index.md),
+  [Silo-LuckyWheel](luckywheel/index.md)
 - **Jobs** — [Silo-PonyExpress](ponyexpress/index.md),
   [Silo-ForestRanger](forestranger/index.md)
 

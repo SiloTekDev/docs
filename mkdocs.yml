@@ -87,15 +87,18 @@ nav:
           - Installation: redm/backgammon/installation.md
           - Configuration: redm/backgammon/configuration.md
           - Gameplay & Admin: redm/backgammon/gameplay.md
+          - Changelog: redm/backgammon/changelog.md
       - Silo-Mayorpoly:
           - redm/mayorpoly/index.md
           - Installation: redm/mayorpoly/installation.md
           - Configuration: redm/mayorpoly/configuration.md
           - Playing & Rules: redm/mayorpoly/rules.md
+          - Changelog: redm/mayorpoly/changelog.md
       - Silo-DuelDice:
           - redm/dueldice/index.md
           - Installation: redm/dueldice/installation.md
           - Configuration: redm/dueldice/configuration.md
+          - Changelog: redm/dueldice/changelog.md
       - Silo-PonyExpress:
           - redm/ponyexpress/index.md
           - Installation: redm/ponyexpress/installation.md
@@ -108,6 +111,12 @@ nav:
           - Incidents: redm/forestranger/incidents.md
           - Configuration: redm/forestranger/configuration.md
           - API & Limitations: redm/forestranger/api.md
+          - Changelog: redm/forestranger/changelog.md
+      - Silo-LuckyWheel:
+          - redm/luckywheel/index.md
+          - Installation: redm/luckywheel/installation.md
+          - Configuration: redm/luckywheel/configuration.md
+          - Changelog: redm/luckywheel/changelog.md
   - OmniPanel: omnipanel/index.md
   - Hosting: hosting/index.md
   - RootOps: rootops/index.md
