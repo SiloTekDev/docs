@@ -1,7 +1,25 @@
 # Changelog
 
-Version currently shipping: **1.0.0** — paired with
+Version currently shipping: **1.0.1** — paired with
 `Silo-Mayorpoly-Props` **1.0.0** and [`silo-libs`](../silo-libs/index.md).
+
+## v1.0.1 — 2026-08-21
+
+**Fixed**
+
+- The owned-properties panel could name the wrong spaces — a bought ranch
+  listed as a railroad, or Chance / Chest / GO appearing as owned deeds —
+  once the early board spaces were all bought. Board ownership now crosses
+  to the interface as explicit-index lists, immune to the array conversion
+  that shifted every deed by one space.
+- Display-only bug: cash, rents and actual ownership on the server were
+  always correct. No config or database changes are needed — replace the
+  resource and restart.
+
+**Changed**
+
+- The fix is locked in by a new automated regression test that drives the
+  real interface code with the real board data, so it cannot come back.
 
 ## v1.0.0 — 2026-08-14
 
