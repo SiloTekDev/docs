@@ -1,7 +1,59 @@
 # Changelog
 
-Version currently shipping: **1.1.0** — paired with
+Version currently shipping: **1.3.0** — paired with
 `Silo-LuckyWheel-Props` **1.0** and [`silo-libs`](../silo-libs/index.md).
+
+## v1.3.0 — 2026-08-21
+
+### Added
+
+- **Prize stock.** Every entry in `Prizes` takes a `stock` — how many times it
+  can be won before the next restart. `0` or missing = unlimited.
+
+    ```lua
+    ["100"] = { money = 1000, label = "100x", stock = 1 },
+    ["30"]  = { money = 300, stock = 5 },
+    ```
+
+- A prize that runs out leaves the wheel; the remaining values share its odds.
+  Nothing is persisted — a restart refills everything.
+- Stock is reserved when the segment is rolled, not when it is paid, so two
+  wheels cannot award the same last jackpot during the same spin. A winner who
+  disconnects puts it back.
+- An exhausted wheel refuses to spin **before** charging the player.
+- `lwstock` / `lwstock reset` on the server console.
+- `test/test_stock.lua` — 27 checks.
+
+## v1.2.0 — 2026-08-21
+
+### Added
+
+- **Discord webhooks.** Every spin can be logged: who spun, what they paid,
+  what they won, and the net swing.
+
+    ```lua
+    Webhooks = {
+        Enabled  = false,
+        Username = "Lucky Wheel",
+        AvatarUrl = "",
+        Win      = "",   -- every spin result
+        BigWin   = "",   -- only wins of AnnounceMinValue and up
+    },
+    ```
+
+- Two URLs, so a busy log and a highlights channel can live apart. The same
+  URL in both posts once, not twice; an empty slot switches that log off.
+- The entry names the wheel, the slice, the stake (`$10` or `1x Gold Bar`),
+  the winnings, the character ID, and the net for cash spins.
+- Undelivered item prizes are named in the log, and a player who disconnects
+  before the payout is logged as a dropped prize instead of disappearing
+  silently.
+- `test/test_webhook.lua` — 27 checks over the payload and posting rules.
+
+### Notes
+
+- Webhook text is English regardless of `Locale`, matching Silo-ForestRanger.
+  These messages are read by server staff; player-facing text stays localized.
 
 ## v1.1.0 — 2026-08-18
 

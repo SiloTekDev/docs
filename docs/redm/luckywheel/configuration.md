@@ -118,6 +118,84 @@ Items ride along with money:
 | `AnnounceMinValue` | `30` | announce wins of this value and up (`false` = never) |
 | `AnnounceRange` | `50` | metres that hear it (`0` = whole server) |
 
+## Prize stock
+
+Every prize takes a `stock` — how many times it can be won before the next
+server restart. `0` or missing means unlimited.
+
+```lua
+["100"] = { money = 1000, label = "100x", stock = 1 },  -- one jackpot per restart
+["30"]  = { money = 300, stock = 5 },                   -- five of these
+["1"]   = { money = 10, stock = 0 },                    -- unlimited
+```
+
+A prize that runs out **leaves the wheel**: it is never rolled again until
+restart, and the remaining values share its odds. The pointer still lands on a
+painted segment — it just never lands on that value.
+
+Nothing is written to disk. A restart refills every prize, which is what "per
+restart" means.
+
+!!! warning "`stock = 0` means unlimited, not sold out"
+    Zero and a missing field both mean "no limit". To close a prize entirely,
+    remove it from `Prizes` or set its `Chances` weight to 0.
+
+If every prize is exhausted the wheel refuses to spin and tells the player so
+— checked **before** they are charged, so nobody pays for a wheel that has
+nothing left to give.
+
+From the server console:
+
+```
+lwstock          # print what is left
+lwstock reset    # refill without restarting
+```
+
+!!! tip "Stock is not a balance fix"
+    Limiting the jackpot lowers the long-run payout, but it does not repair a
+    pay table that is too generous to begin with — the wheel simply pays the
+    smaller prizes more often. Get `Prizes` against `SpinCost` right first,
+    then use stock to cap how often the top values can appear.
+
+## Discord logging
+
+Every spin can be logged to Discord — who spun, what they paid, what they won:
+
+```lua
+Webhooks = {
+    Enabled  = false,          -- master switch
+    Username = "Lucky Wheel",
+    AvatarUrl = "",
+    Win      = "",             -- every spin result
+    BigWin   = "",             -- only wins of AnnounceMinValue and up
+},
+```
+
+| Option | Meaning |
+|--------|---------|
+| `Enabled` | `false` turns all logging off, whatever the URLs say |
+| `Win` | a line for **every** spin — a busy channel |
+| `BigWin` | only wins of `AnnounceMinValue` and up — a quiet highlights channel |
+
+Get a URL from **Edit Channel → Integrations → Webhooks → New Webhook**.
+
+!!! tip "Same URL in both is safe"
+    Put one URL in both slots and a big win is posted **once**, not twice.
+    Leave a slot empty to switch that log off.
+
+Each entry names the wheel, the slice it landed on, the stake (`$10` or
+`1x Gold Bar`), the winnings, the character ID and — for cash spins — the net
+(`+$90` / `-$40`). Net is left out when the stake was an item, since the two
+sides are not comparable.
+
+Two things worth having in the log: item prizes that **could not be
+delivered** (a full satchel) are named under `NOT delivered`, and a player who
+disconnects between the spin and the payout is logged as a dropped prize
+rather than vanishing silently.
+
+The messages are English regardless of `Locale` — they are read by your staff,
+not by players.
+
 ## Sounds
 
 Native RDR2 sounds, every entry `{ soundset, sound }`, any entry `false` to

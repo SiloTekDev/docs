@@ -27,6 +27,12 @@ player standing nearby watches the same wheel slow down onto the same slice.
   per value.
 - **Big-win announcements** — wins of 30 and 100x can be broadcast so the
   whole saloon knows who just got lucky.
+- **Discord logging** — every spin can post to a webhook: who spun, what they
+  paid, what they won and the net swing. Busy log and highlights channel can
+  be kept apart.
+- **Prize stock** — cap how many times a prize can be won per restart. One
+  jackpot a night, five of the second tier; a prize that runs out leaves the
+  wheel until the server restarts.
 - **Unlimited wheels**, each spinning independently, each with its own map
   blip and its own price.
 - **10 languages** — en, ro, it, de, fr, es, pt, ru, pl, tr.
