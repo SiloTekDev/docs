@@ -1,7 +1,12 @@
 # Changelog
 
-Version currently shipping: **1.1.0** — paired with
+Version currently shipping: **1.1.1** — paired with
 [`silo-libs`](../silo-libs/index.md) **1.1.0 or newer**. No streamed props.
+
+## v1.1.1 — 2026-08-24
+
+NUI hardening: `html/app.js` now ships obfuscated (same filename) and its
+callback URLs are hardcoded to the resource name. No gameplay changes.
 
 ## v1.1.0 — 2026-08-02
 

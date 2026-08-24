@@ -1,7 +1,17 @@
 # Changelog
 
-Version currently shipping: **1.0.1** — paired with
+Version currently shipping: **1.0.2** — paired with
 `Silo-Mayorpoly-Props` **1.0.0** and [`silo-libs`](../silo-libs/index.md).
+
+## v1.0.2 — 2026-08-24
+
+Voice fix: push-to-talk stays usable for the whole seated session — the UI
+keeps game input alive and blocks every control except `INPUT_PUSH_TO_TALK`,
+so players can talk on voice while they play. Same pattern as the other
+SiloTek games.
+
+NUI hardening: `html/app.js` now ships obfuscated (same filename) and its
+callback URLs are hardcoded to the resource name.
 
 ## v1.0.1 — 2026-08-21
 

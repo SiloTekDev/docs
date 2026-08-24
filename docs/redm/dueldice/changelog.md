@@ -1,7 +1,17 @@
 # Changelog
 
-Version currently shipping: **1.0.0** — paired with
+Version currently shipping: **1.0.1** — paired with
 [`silo-libs`](../silo-libs/index.md). No database, no streamed props.
+
+## v1.0.1 — 2026-08-24
+
+Voice fix: push-to-talk stays usable while the stake dialog is open — same
+pattern as the other SiloTek games — the UI keeps game input alive and blocks every control except
+`INPUT_PUSH_TO_TALK`, so players can talk on voice while they play. Gameplay itself never grabs UI focus,
+so nothing else changed.
+
+NUI hardening: `html/app.js` now ships obfuscated (same filename) and its
+callback URLs are hardcoded to the resource name.
 
 ## v1.0.0 — 2026-08-13
 

@@ -1,8 +1,22 @@
 # Changelog
 
-Version currently shipping: **1.0.1** — paired with
-`Silo-Backgammon-Props` **1.2** and
+Version currently shipping: **1.0.2** — paired with
+`Silo-Backgammon-Props` **1.2.1** and
 [`silo-libs`](../silo-libs/index.md) **1.0.0 or newer**.
+
+## v1.0.2 — 2026-08-24
+
+Voice fix: push-to-talk stays usable for the whole seated session (betting
+and match) — same pattern as the other SiloTek games — the UI keeps game input alive and blocks every control except
+`INPUT_PUSH_TO_TALK`, so players can talk on voice while they play.
+
+NUI hardening: `html/app.js` now ships obfuscated (same filename) and its
+callback URLs are hardcoded to the resource name.
+
+## Silo-Backgammon-Props v1.2.1 — 2026-08-23
+
+Texture fix in `backgammontex.ytd` (dictionary rebuilt). Models and archetype
+names unchanged — drop-in replacement for Props 1.2, no game update needed.
 
 ## v1.0.1 — 2026-08-09
 
