@@ -94,6 +94,11 @@ nav:
           - Configuration: redm/mayorpoly/configuration.md
           - Playing & Rules: redm/mayorpoly/rules.md
           - Changelog: redm/mayorpoly/changelog.md
+      - Silo-Dominoes:
+          - redm/dominoes/index.md
+          - Installation: redm/dominoes/installation.md
+          - Configuration: redm/dominoes/configuration.md
+          - Changelog: redm/dominoes/changelog.md
       - Silo-DuelDice:
           - redm/dueldice/index.md
           - Installation: redm/dueldice/installation.md

@@ -12,6 +12,7 @@ nothing to configure.
 | **[silo-libs](silo-libs/index.md)** | Free, open-source framework bridge (VORP / RSG) every SiloTek script builds on | [GitHub — free](https://github.com/SiloTekDev/silo-libs) |
 | **[Silo-Backgammon](backgammon/index.md)** | Two-player 3D backgammon on physical tables, with betting, spectators and crash recovery | [silotek.dev](https://silotek.dev) |
 | **[Silo-Mayorpoly](mayorpoly/index.md)** | 2–6 player 3D frontier property board game: real board, real deeds on the table, trading, breaks and crash recovery | [silotek.dev](https://silotek.dev) |
+| **[Silo-Dominoes](dominoes/index.md)** | Two-player 3D dominoes on physical tables — All Fives, Draw and Block rules, betting with escrow, spectators and crash recovery | [silotek.dev](https://silotek.dev) |
 | **[Silo-DuelDice](dueldice/index.md)** | Street dice duel — one item, two kneeling players, no UI at all | [silotek.dev](https://silotek.dev) |
 | **[Silo-PonyExpress](ponyexpress/index.md)** | Player-driven delivery job: courier board, XP & levels, express orders, parcel lockers | [silotek.dev](https://silotek.dev) |
 | **[Silo-ForestRanger](forestranger/index.md)** | Forest ranger job: six random incident types, Eagle Eye tracking, vanilla arrests, ranks and shared payouts | [silotek.dev](https://silotek.dev) |
@@ -20,8 +21,8 @@ nothing to configure.
 ### Games or jobs?
 
 - **Minigames** — [Silo-Backgammon](backgammon/index.md),
-  [Silo-Mayorpoly](mayorpoly/index.md), [Silo-DuelDice](dueldice/index.md),
-  [Silo-LuckyWheel](luckywheel/index.md)
+  [Silo-Mayorpoly](mayorpoly/index.md), [Silo-Dominoes](dominoes/index.md),
+  [Silo-DuelDice](dueldice/index.md), [Silo-LuckyWheel](luckywheel/index.md)
 - **Jobs** — [Silo-PonyExpress](ponyexpress/index.md),
   [Silo-ForestRanger](forestranger/index.md)
 
