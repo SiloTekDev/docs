@@ -1,69 +1,14 @@
 # Changelog
 
-Version currently shipping: **1.4.0** — paired with
+Version currently shipping: **1.2.0** — paired with
 `Silo-LuckyWheel-Props` **1.0** and [`silo-libs`](../silo-libs/index.md).
-
-## v1.4.0 — 2026-08-21
-
-### Added
-
-- **`lwodds`** on the server console prints the real chance of every value,
-  how many spins that is on average and roughly how long that takes. It
-  reports what the roll actually does, so a prize out of stock shows `0%` with
-  its odds already shared out.
-
-### Changed
-
-- **`Chances` documented properly.** They were always shares, not percentages
-  — each divided by the sum of all of them. With the defaults totalling 54,
-  `["100"] = 1` is **1.85%**, not 1%. The config now says so and carries a
-  ready-made block that adds up to 100, so every number reads as a percent.
-- Decimal shares documented: `0.2` out of 100 is one spin in 500.
-- `test/test_odds.lua` — 25 checks.
-
-### Notes
-
-- No odds changed in this release; the defaults still mirror the painted wheel.
-
-## v1.3.1 — 2026-08-21
-
-### Fixed
-
-- **Wrong title on the wheel's prompt.** Walking up to a Lucky Wheel after
-  standing at a Backgammon or Mayorpoly table showed *that* table's title over
-  the wheel prompt. The wheel was reusing text handles built when the resource
-  started; the game recycles the buffer they point into, so another script
-  writing prompt text overwrote them. Both the group title and the prompt text
-  are now built fresh where they are used, as in every other script in the
-  series. Update the resource — no config change needed.
-
-## v1.3.0 — 2026-08-21
-
-### Added
-
-- **Prize stock.** Every entry in `Prizes` takes a `stock` — how many times it
-  can be won before the next restart. `0` or missing = unlimited.
-
-    ```lua
-    ["100"] = { money = 1000, label = "100x", stock = 1 },
-    ["30"]  = { money = 300, stock = 5 },
-    ```
-
-- A prize that runs out leaves the wheel; the remaining values share its odds.
-  Nothing is persisted — a restart refills everything.
-- Stock is reserved when the segment is rolled, not when it is paid, so two
-  wheels cannot award the same last jackpot during the same spin. A winner who
-  disconnects puts it back.
-- An exhausted wheel refuses to spin **before** charging the player.
-- `lwstock` / `lwstock reset` on the server console.
-- `test/test_stock.lua` — 27 checks.
 
 ## v1.2.0 — 2026-08-21
 
 ### Added
 
 - **Discord webhooks.** Every spin can be logged: who spun, what they paid,
-  what they won, and the net swing.
+  what they won and the net swing.
 
     ```lua
     Webhooks = {
@@ -75,19 +20,37 @@ Version currently shipping: **1.4.0** — paired with
     },
     ```
 
-- Two URLs, so a busy log and a highlights channel can live apart. The same
-  URL in both posts once, not twice; an empty slot switches that log off.
-- The entry names the wheel, the slice, the stake (`$10` or `1x Gold Bar`),
-  the winnings, the character ID, and the net for cash spins.
-- Undelivered item prizes are named in the log, and a player who disconnects
-  before the payout is logged as a dropped prize instead of disappearing
-  silently.
-- `test/test_webhook.lua` — 27 checks over the payload and posting rules.
+    Two URLs so a busy log and a highlights channel can live apart; the same
+    URL in both posts once, not twice.
 
-### Notes
+- **Prize stock.** Every entry in `Prizes` takes a `stock` — how many times it
+  can be won before the next restart. `0` or missing = unlimited.
 
-- Webhook text is English regardless of `Locale`, matching Silo-ForestRanger.
-  These messages are read by server staff; player-facing text stays localized.
+    ```lua
+    ["100"] = { money = 1000, label = "100x", stock = 1 },
+    ["30"]  = { money = 300, stock = 5 },
+    ```
+
+    A prize that runs out leaves the wheel; the rest share its odds. Nothing is
+    persisted. An exhausted wheel refuses to spin **before** charging.
+
+- **`lwodds`** on the server console prints the real chance of every value and
+  how many spins that is. `lwstock` / `lwstock reset` manage prize stock.
+
+### Fixed
+
+- **The prompt showed another script's title** after standing at a Backgammon
+  or Mayorpoly table. The wheel reused text handles built at resource start,
+  and the game recycles the buffer they point into.
+
+### Changed
+
+- **`Chances` documented properly.** They were always shares, not percentages
+  — each divided by the sum of all of them. With the defaults totalling 54,
+  `["100"] = 1` is **1.85%**, not 1%. The config now says so and ships a block
+  that adds up to 100, so every number reads as a percent. Decimals work.
+- **No odds changed** — the defaults still mirror the painted wheel.
+- Three new test suites; 130 checks in total.
 
 ## v1.1.0 — 2026-08-18
 

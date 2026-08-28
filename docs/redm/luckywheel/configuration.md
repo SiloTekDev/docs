@@ -290,6 +290,6 @@ end
 | Pressing ++g++ does nothing | `silo-libs` not started before this resource, or a script error in the server console. |
 | Wheel lands on the **wrong slice** | Flip `SpinDirection`, then verify with `lwtest` (`Dev = true`). |
 | No prompt at the wheel | You are farther than `PromptDistance`, or the wheel's coords are wrong (check F8 for spawn errors). |
-| Prompt shows **another script's title** | Fixed in 1.3.1 — update the resource. Older builds cached the prompt text at start and the game reused that buffer slot. |
+| Prompt shows **another script's title** | Fixed in 1.2.0 — update the resource. Older builds cached the prompt text at start and the game reused that buffer slot. |
 | "This wheel is out of order" | The spin cost is misconfigured — the server console names the wheel and the reason — or an item cost is running on a framework without an inventory adapter (**VORP only** today). |
 | An item cost is never taken | The `item` name must match your framework's item database exactly. A wrong name gives the same "out of order" message and logs it. |
