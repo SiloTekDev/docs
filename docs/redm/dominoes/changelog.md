@@ -1,8 +1,21 @@
 # Changelog
 
-Version currently shipping: **1.0.0** — paired with
+Version currently shipping: **1.0.1** — paired with
 [`silo-libs`](../silo-libs/index.md) and `oxmysql`. No streamed props — every
 tile, table and chair is a native RDR2 asset.
+
+## [1.0.1] - 2026-08-28
+
+### Fixed
+
+- **Chairs could land under a raised platform.** `PlaceObjectOnGroundProperly`
+  raycasts down from the prop's own position; a chair spawned exactly level
+  with a platform surface could start the ray a hair below it and snap to the
+  terrain underneath. Furniture now spawns **0.5 m above** the detected floor
+  before snapping, and a chair that still ends up more than 0.75 m below the
+  table's floor is clamped back to it. Placement is now fully deterministic:
+  the table settles on whatever surface is at the coords, the chairs follow
+  the table's floor, tiles and players follow the table.
 
 ## [1.0.0] - 2026-08-26
 
