@@ -2025,6 +2025,34 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#the-odds" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The odds
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="The odds">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#seeing-the-real-odds" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Seeing the real odds
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#prize-stock" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2333,6 +2361,34 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#the-odds" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The odds
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="The odds">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#seeing-the-real-odds" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Seeing the real odds
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#prize-stock" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2605,12 +2661,42 @@ message lists only what actually arrived and the console records the rest.</p>
 </tr>
 </tbody>
 </table>
+<h2 id="the-odds">The odds<a class="headerlink" href="#the-odds" title="Permanent link">&para;</a></h2>
+<p><code>Chances</code> are <strong>shares, not percentages</strong>. Each number is divided by the sum of
+all of them:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="p">[</span><span class="s2">&quot;100&quot;</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="w">   </span><span class="c1">-- total 100 -&gt; exactly 1%   (1 spin in 100)</span>
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="p">[</span><span class="s2">&quot;100&quot;</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="w">   </span><span class="c1">-- total  54 -&gt; 1.85%        (1 spin in 54)</span>
+</code></pre></div>
+<div class="admonition warning">
+<p class="admonition-title">The defaults total 54, not 100</p>
+<p>One share per segment painted on the wheel, so the odds match what players
+see. That makes <code>["100"] = 1</code> a <strong>1.85%</strong> jackpot — roughly one every 13
+minutes of continuous play, not one in a hundred spins. This catches people
+out.</p>
+</div>
+<p><strong>To think in percentages</strong>, make the shares add up to 100 — then every number
+is a literal percent. <code>config.lua</code> carries a ready-made block for it. Decimals
+work as well: <code>0.2</code> out of 100 is one spin in 500.</p>
+<h3 id="seeing-the-real-odds">Seeing the real odds<a class="headerlink" href="#seeing-the-real-odds" title="Permanent link">&para;</a></h3>
+<p>From the server console:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>lwodds
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>odds — shares total 54  (NOT percentages: each share is divided by 54)
+<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>  VALUE  SHARE  CHANCE   1 IN N SPINS        SEGMENTS
+<a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a>  1      21     38.89%   1 in 3 (~1 min)     21
+<a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a>  2      14     25.93%   1 in 4 (~1 min)     14
+<a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a>  100    1      1.85%    1 in 54 (~13 min)   1
+<a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a>  tip: make the shares add up to 100 and each one reads as a percentage
+</code></pre></div>
+<p>It reports what the roll actually does, so a prize that is out of stock shows
+<code>0%</code> and its odds already appear redistributed across the rest. Minutes assume
+one player spinning without a break.</p>
 <h2 id="prize-stock">Prize stock<a class="headerlink" href="#prize-stock" title="Permanent link">&para;</a></h2>
 <p>Every prize takes a <code>stock</code> — how many times it can be won before the next
 server restart. <code>0</code> or missing means unlimited.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="p">[</span><span class="s2">&quot;100&quot;</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nv">money</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1000</span><span class="p">,</span><span class="w"> </span><span class="nv">label</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;100x&quot;</span><span class="p">,</span><span class="w"> </span><span class="nv">stock</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="p">},</span><span class="w">  </span><span class="c1">-- one jackpot per restart</span>
-<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="p">[</span><span class="s2">&quot;30&quot;</span><span class="p">]</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nv">money</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">300</span><span class="p">,</span><span class="w"> </span><span class="nv">stock</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">5</span><span class="w"> </span><span class="p">},</span><span class="w">                   </span><span class="c1">-- five of these</span>
-<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="p">[</span><span class="s2">&quot;1&quot;</span><span class="p">]</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nv">money</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w"> </span><span class="nv">stock</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="p">},</span><span class="w">                    </span><span class="c1">-- unlimited</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="p">[</span><span class="s2">&quot;100&quot;</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nv">money</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1000</span><span class="p">,</span><span class="w"> </span><span class="nv">label</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;100x&quot;</span><span class="p">,</span><span class="w"> </span><span class="nv">stock</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="p">},</span><span class="w">  </span><span class="c1">-- one jackpot per restart</span>
+<a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="p">[</span><span class="s2">&quot;30&quot;</span><span class="p">]</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nv">money</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">300</span><span class="p">,</span><span class="w"> </span><span class="nv">stock</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">5</span><span class="w"> </span><span class="p">},</span><span class="w">                   </span><span class="c1">-- five of these</span>
+<a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a><span class="p">[</span><span class="s2">&quot;1&quot;</span><span class="p">]</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nv">money</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w"> </span><span class="nv">stock</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="p">},</span><span class="w">                    </span><span class="c1">-- unlimited</span>
 </code></pre></div>
 <p>A prize that runs out <strong>leaves the wheel</strong>: it is never rolled again until
 restart, and the remaining values share its odds. The pointer still lands on a
@@ -2626,8 +2712,8 @@ remove it from <code>Prizes</code> or set its <code>Chances</code> weight to 0.<
 — checked <strong>before</strong> they are charged, so nobody pays for a wheel that has
 nothing left to give.</p>
 <p>From the server console:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>lwstock          # print what is left
-<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>lwstock reset    # refill without restarting
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>lwstock          # print what is left
+<a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a>lwstock reset    # refill without restarting
 </code></pre></div>
 <div class="admonition tip">
 <p class="admonition-title">Stock is not a balance fix</p>
@@ -2638,13 +2724,13 @@ then use stock to cap how often the top values can appear.</p>
 </div>
 <h2 id="discord-logging">Discord logging<a class="headerlink" href="#discord-logging" title="Permanent link">&para;</a></h2>
 <p>Every spin can be logged to Discord — who spun, what they paid, what they won:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="nv">Webhooks</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="w">    </span><span class="nv">Enabled</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">          </span><span class="c1">-- master switch</span>
-<a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="w">    </span><span class="nv">Username</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;Lucky Wheel&quot;</span><span class="p">,</span>
-<a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a><span class="w">    </span><span class="nv">AvatarUrl</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="p">,</span>
-<a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a><span class="w">    </span><span class="nv">Win</span><span class="w">      </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="p">,</span><span class="w">             </span><span class="c1">-- every spin result</span>
-<a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a><span class="w">    </span><span class="nv">BigWin</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="p">,</span><span class="w">             </span><span class="c1">-- only wins of AnnounceMinValue and up</span>
-<a id="__codelineno-7-7" name="__codelineno-7-7" href="#__codelineno-7-7"></a><span class="p">},</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="nv">Webhooks</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a><span class="w">    </span><span class="nv">Enabled</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">          </span><span class="c1">-- master switch</span>
+<a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a><span class="w">    </span><span class="nv">Username</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;Lucky Wheel&quot;</span><span class="p">,</span>
+<a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a><span class="w">    </span><span class="nv">AvatarUrl</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="p">,</span>
+<a id="__codelineno-10-5" name="__codelineno-10-5" href="#__codelineno-10-5"></a><span class="w">    </span><span class="nv">Win</span><span class="w">      </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="p">,</span><span class="w">             </span><span class="c1">-- every spin result</span>
+<a id="__codelineno-10-6" name="__codelineno-10-6" href="#__codelineno-10-6"></a><span class="w">    </span><span class="nv">BigWin</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="p">,</span><span class="w">             </span><span class="c1">-- only wins of AnnounceMinValue and up</span>
+<a id="__codelineno-10-7" name="__codelineno-10-7" href="#__codelineno-10-7"></a><span class="p">},</span>
 </code></pre></div>
 <table>
 <thead>
@@ -2689,7 +2775,7 @@ not by players.</p>
 mute. Out of the box the pointer <strong>clacks over every wooden peg</strong> while the
 wheel spins (<code>SoundTick</code>, throttled by <code>SoundTickMs</code>) and a cash-register bell
 rings when it settles (<code>SoundStop</code>).</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>/lwsound &lt;soundset&gt; &lt;sound&gt;
+<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>/lwsound &lt;soundset&gt; &lt;sound&gt;
 </code></pre></div>
 <p>The soundset browser lives at
 <a href="https://github.com/femga/rdr3_discoveries">github.com/femga/rdr3_discoveries</a>
@@ -2700,7 +2786,7 @@ clockwise from the pointer. The winning segment is chosen from this list, so it
 must always match what players actually see.</p>
 <p>Leave it alone unless you repaint the wheel texture. If you do, <code>Dev = true</code>
 gives you a server-console command to verify the alignment slice by slice:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>lwtest &lt;wheelId&gt; &lt;segIndex 1-54&gt;
+<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>lwtest &lt;wheelId&gt; &lt;segIndex 1-54&gt;
 </code></pre></div>
 <p>If the wheel visibly lands one slice to the <em>wrong side</em> of the pointer, flip
 <code>SpinDirection</code>.</p>
@@ -2708,9 +2794,9 @@ gives you a server-console command to verify the alignment slice by slice:</p>
 <p><code>Locale = "en"</code> — 10 languages included (<code>en ro it de fr es pt ru pl tr</code>).
 Add your own by copying the <code>en</code> block in <code>locales/locales.lua</code>.</p>
 <h2 id="notifications">Notifications<a class="headerlink" href="#notifications" title="Permanent link">&para;</a></h2>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="kr">function</span><span class="w"> </span><span class="nf">NotifyFunction</span><span class="p">(</span><span class="nv">source</span><span class="p">,</span><span class="w"> </span><span class="nv">text</span><span class="p">)</span>
-<a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a><span class="w">    </span><span class="c1">-- auto-detects VORP / RSG; replace with your own system if needed</span>
-<a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a><span class="kr">end</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="kr">function</span><span class="w"> </span><span class="nf">NotifyFunction</span><span class="p">(</span><span class="nv">source</span><span class="p">,</span><span class="w"> </span><span class="nv">text</span><span class="p">)</span>
+<a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a><span class="w">    </span><span class="c1">-- auto-detects VORP / RSG; replace with your own system if needed</span>
+<a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a><span class="kr">end</span>
 </code></pre></div>
 <h2 id="troubleshooting">Troubleshooting<a class="headerlink" href="#troubleshooting" title="Permanent link">&para;</a></h2>
 <table>
@@ -2740,6 +2826,10 @@ Add your own by copying the <code>en</code> block in <code>locales/locales.lua</
 <tr>
 <td>No prompt at the wheel</td>
 <td>You are farther than <code>PromptDistance</code>, or the wheel's coords are wrong (check F8 for spawn errors).</td>
+</tr>
+<tr>
+<td>Prompt shows <strong>another script's title</strong></td>
+<td>Fixed in 1.3.1 — update the resource. Older builds cached the prompt text at start and the game reused that buffer slot.</td>
 </tr>
 <tr>
 <td>"This wheel is out of order"</td>
