@@ -1,7 +1,41 @@
 # Changelog
 
-Version currently shipping: **1.3.0** — paired with
+Version currently shipping: **1.4.0** — paired with
 `Silo-LuckyWheel-Props` **1.0** and [`silo-libs`](../silo-libs/index.md).
+
+## v1.4.0 — 2026-08-21
+
+### Added
+
+- **`lwodds`** on the server console prints the real chance of every value,
+  how many spins that is on average and roughly how long that takes. It
+  reports what the roll actually does, so a prize out of stock shows `0%` with
+  its odds already shared out.
+
+### Changed
+
+- **`Chances` documented properly.** They were always shares, not percentages
+  — each divided by the sum of all of them. With the defaults totalling 54,
+  `["100"] = 1` is **1.85%**, not 1%. The config now says so and carries a
+  ready-made block that adds up to 100, so every number reads as a percent.
+- Decimal shares documented: `0.2` out of 100 is one spin in 500.
+- `test/test_odds.lua` — 25 checks.
+
+### Notes
+
+- No odds changed in this release; the defaults still mirror the painted wheel.
+
+## v1.3.1 — 2026-08-21
+
+### Fixed
+
+- **Wrong title on the wheel's prompt.** Walking up to a Lucky Wheel after
+  standing at a Backgammon or Mayorpoly table showed *that* table's title over
+  the wheel prompt. The wheel was reusing text handles built when the resource
+  started; the game recycles the buffer they point into, so another script
+  writing prompt text overwrote them. Both the group title and the prompt text
+  are now built fresh where they are used, as in every other script in the
+  series. Update the resource — no config change needed.
 
 ## v1.3.0 — 2026-08-21
 

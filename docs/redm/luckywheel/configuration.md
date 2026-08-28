@@ -118,6 +118,47 @@ Items ride along with money:
 | `AnnounceMinValue` | `30` | announce wins of this value and up (`false` = never) |
 | `AnnounceRange` | `50` | metres that hear it (`0` = whole server) |
 
+## The odds
+
+`Chances` are **shares, not percentages**. Each number is divided by the sum of
+all of them:
+
+```lua
+["100"] = 1   -- total 100 -> exactly 1%   (1 spin in 100)
+["100"] = 1   -- total  54 -> 1.85%        (1 spin in 54)
+```
+
+!!! warning "The defaults total 54, not 100"
+    One share per segment painted on the wheel, so the odds match what players
+    see. That makes `["100"] = 1` a **1.85%** jackpot — roughly one every 13
+    minutes of continuous play, not one in a hundred spins. This catches people
+    out.
+
+**To think in percentages**, make the shares add up to 100 — then every number
+is a literal percent. `config.lua` carries a ready-made block for it. Decimals
+work as well: `0.2` out of 100 is one spin in 500.
+
+### Seeing the real odds
+
+From the server console:
+
+```
+lwodds
+```
+
+```
+odds — shares total 54  (NOT percentages: each share is divided by 54)
+  VALUE  SHARE  CHANCE   1 IN N SPINS        SEGMENTS
+  1      21     38.89%   1 in 3 (~1 min)     21
+  2      14     25.93%   1 in 4 (~1 min)     14
+  100    1      1.85%    1 in 54 (~13 min)   1
+  tip: make the shares add up to 100 and each one reads as a percentage
+```
+
+It reports what the roll actually does, so a prize that is out of stock shows
+`0%` and its odds already appear redistributed across the rest. Minutes assume
+one player spinning without a break.
+
 ## Prize stock
 
 Every prize takes a `stock` — how many times it can be won before the next
@@ -249,5 +290,6 @@ end
 | Pressing ++g++ does nothing | `silo-libs` not started before this resource, or a script error in the server console. |
 | Wheel lands on the **wrong slice** | Flip `SpinDirection`, then verify with `lwtest` (`Dev = true`). |
 | No prompt at the wheel | You are farther than `PromptDistance`, or the wheel's coords are wrong (check F8 for spawn errors). |
+| Prompt shows **another script's title** | Fixed in 1.3.1 — update the resource. Older builds cached the prompt text at start and the game reused that buffer slot. |
 | "This wheel is out of order" | The spin cost is misconfigured — the server console names the wheel and the reason — or an item cost is running on a framework without an inventory adapter (**VORP only** today). |
 | An item cost is never taken | The `item` name must match your framework's item database exactly. A wrong name gives the same "out of order" message and logs it. |
